@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="nota1">Digite a primeira nota:</label>
+        <input type="text" id="nota1" name="nota1">
+        <br>
+        <label for="nota2">Digite a segunda nota:</label>
+        <input type="text" id="nota2" name="nota2">
+    </form>
+
+    <p>Média:
+        <span id="med">
+
+        </span>
+    </p>
+    <p>Situação:
+        <span id="sit"></span>
+    </p>
+
+
+    <button onclick="calcularMedia();">
+        Calcular Média
+    </button>
+    <script>
+        function calcularMedia(){
+            let n1 = parseFloat(document.getElementById("nota1").value);
+            let n2 = parseFloat(document.getElementById("nota2").value);
+            console.log('nota 1:'+n1);
+            console.log('nota 2:'+n2);
+
+            let media = (n1 + n2)/2;
+            console.log('media:'+media);
+
+            document.getElementById('med').innerHTML = media;
+            let situacao = '';
+            if (media>=6){
+                 situacao = 'Aprovado';
+            } else {
+                 situacao = 'Reprovado';
+            }
+            document.getElementById('sit').innerHTML = situacao;
+        }
+
+        
+    </script>
+    
+</body>
+</html>
