@@ -5,9 +5,15 @@
     <h1>The XMLHttpRequest Object</h1>
     <input type="text" name="cep" id="cep" placeholder="Digite seu CEP">
     <button type="button" onclick="loadDoc()">Change Content</button>
+    <br>
+    <input type="text" id="logradouro" placeholder="Logradouro">
+    <br>
     <input type="text" id="complemento" placeholder="Complemento">
+    <br>
     <input type="text" id="bairro" placeholder="Bairro">
+    <br>
     <input type="text" id="localidade" placeholder="Cidade">
+    <br>
     <input type="text" id="uf" placeholder="UF">
 </div>
 <script>
@@ -22,12 +28,11 @@ function loadDoc() {
       // status 200 = resposta OK
     if (this.readyState == 4 && this.status == 200) {
       let endereco = JSON.parse(this.responseText); 
-      document.write("<p>"+endereco.cep+"</p>") ;
-      document.write("<p>"+endereco.logradouro+"</p>") ;
-      document.write("<p>"+endereco.complemento+"</p>") ;
-      document.write("<p>"+endereco.bairro+"</p>") ;
-      document.write("<p>"+endereco.localidade+"</p>") ;
-      document.write("<p>"+endereco.uf+"</p>") ;
+      document.getElementById("logradouro").value=endereco.logradouro;
+      document.getElementById("complemento").value=endereco.complemento ;
+      document.getElementById("bairro").value=endereco.bairro ;
+      document.getElementById("localidade").value=endereco.localidade ;
+      document.getElementById("uf").value=endereco.uf ;
       
      // document.getElementById("demo").innerHTML = this.responseText;
     }
