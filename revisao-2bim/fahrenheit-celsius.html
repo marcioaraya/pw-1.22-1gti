@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+</head>
+<body>
+    <h1>Conversor temperatura</h1>
+    <h2>Fahrenheit - Celsius</h2>     
+    <label for="fahrenheit">Fahrenheit</label>
+    <input type="text" id="fahrenheit" name="fahrenheit">
+    
+    <p>Fórmula: °C = (°F - 32) / 1,8  </p>
+
+    <p>Celsius:
+        <span id="c">
+        </span>
+    </p>
+
+    <br>
+    <button onclick="calcula()">Converter Fahrenheit -> Celsius</button>
+
+    
+    <script>
+        function calcula(){
+            let situacao="";
+            let cor="black";
+            // ENTRADA: obter o valor em graus Fahrenheit
+            let f = parseFloat(document.getElementById("fahrenheit").value);
+
+            // PROCESSAMENTO: calcular graus celsius de acordo com a fórmula
+            let c = (f - 32) / 1.8;
+            // guarda o valor com 1 casa decimal
+            c = c.toFixed(1);
+
+            if (c>=41){
+                situacao="Hipertermia";
+                cor="red";
+            } else if (c>=39.6){
+                situacao="Febre alta";
+                cor="orange";
+            } else if (c>=37.6){
+                situacao="Febre";
+                cor="yellow";
+            } else if (c>=36){
+                situacao="Normal";
+                cor="green";
+            } else {
+                situacao="Hipotermia";
+                cor="blue";              
+            }
+
+            // SAÍDA: exibe o valor em graus Celsius
+            // localiza a tag <span> com id="c"
+            // altera o innerHTML para conter o valor da variavel c (graus celsius)
+            document.getElementById("c").innerHTML = c + " " + situacao;
+            document.getElementById("c").style.backgroundColor = cor;
+        }
+    </script>
+</body>
+</html>
