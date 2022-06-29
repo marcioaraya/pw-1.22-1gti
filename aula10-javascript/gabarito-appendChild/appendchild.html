@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>The Element Object</h1>
+<h2>The appendChild() Method</h2>
+<!-- acrescenta a tag input para digitar a palavra para incluir na lista -->
+<input type="text" id="palavra">
+
+<ul id="myList">
+  <li>Coffee</li>
+  <li>Tea</li>
+</ul>
+
+<p>Click "Append" to append an item to the end of the list:</p>
+
+<!-- acrescenta botões de rádio para escolher a cor 
+da palavra que será incluída na lista 
+IMPORTANTE: para que os botões de rádio sejam agrupados todos devem ter
+o mesmo valor para o atributo 'name', oor isso o valor de todos é 'name="cores"'
+
+o 'id' é usado para ligar com a tag <label>. O valor do 'for' do <label> deve 
+  ser igual ao 'id' do <input> que se refere
+
+-->
+<input type="radio" name="cores" value='red' id="rad1">
+<label for="rad1">Vermelho</label>
+<input type="radio" name="cores" value='green'  id="rad2">
+<label for="rad2">Verde</label>
+<input type="radio" name="cores" value='blue' id="rad3">
+<label for="rad3">Azul</label>
+
+<button onclick="myFunction()">Append</button>
+
+<script>
+function myFunction() {
+
+// Create an "li" node:
+const node = document.createElement("li");
+
+// pega o valor do botão de radio selecionado
+const cor = document.querySelector('input[name="cores"]:checked').value;
+// pega o valor digitado
+const novoValor = document.getElementById('novo').value;
+// Create a text node:
+const textnode = document.createTextNode(novoValor);
+
+// Append the text node to the "li" node:
+node.appendChild(textnode);
+// altera a cor do elemento acrescentado (node já é o elemento que queremos alterar a cor)
+node.style.color=cor;
+// Append the "li" node to the list:
+document.getElementById("myList").appendChild(node);
+}
+
+
+</script>
+
+</body>
+</html>
